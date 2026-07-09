@@ -1,0 +1,12 @@
+{
+  "name": "acommit",
+  "displayName": "acommit",
+  "version": "0.1.0",
+  "description": "변경사항을 도메인별로 분리해 커밋하고 브랜치를 자동 관리하는 스마트 커밋 어시스턴트",
+  "author": {
+    "name": "9um4",
+    "email": "9um4.dev@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": ["git", "commit", "branch", "workflow", "smart-commit"]
+}
