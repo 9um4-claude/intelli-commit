@@ -1,5 +1,5 @@
 ---
-name: intelliCommit-exec
+name: intellicommit-exec
 description: IntelliCommit 전용 실행 에이전트. 승인된 커밋 플랜을 실행하고 리포트와 PR을 처리한다. intelliCommit 스킬에서만 호출됨.
 model: sonnet
 effort: low
