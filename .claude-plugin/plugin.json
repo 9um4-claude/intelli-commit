@@ -8,8 +8,8 @@
     "name": "9um4",
     "email": "9um4.dev@gmail.com"
   },
-  "homepage": "https://github.com/9um4-claude/intelliCommit",
-  "repository": "https://github.com/9um4-claude/intelliCommit.git",
+  "homepage": "https://github.com/9um4-claude/intelli-commit",
+  "repository": "https://github.com/9um4-claude/intelli-commit.git",
   "license": "MIT",
   "keywords": ["git", "commit", "branch", "workflow", "smart-commit"]
 }
