@@ -147,13 +147,29 @@ dev로부터 많이 갈라진 경우 발생 가능.
 
 ---
 
-## Phase 5: GPG 확인
+## Phase 5: 서명 확인
 
+먼저 서명 방식을 감지한다:
+```bash
+git config gpg.format 2>/dev/null || echo "gpg"
+```
+
+**SSH 서명** (`ssh` 출력 시):
+```bash
+ssh-add -l 2>&1
+```
+exit 非0 또는 "no identities" 출력 시 안내 후 대기:
+```
+별도 터미널에서 실행 후 Enter:
+  ssh-add ~/.ssh/id_ed25519   # 또는 user.signingkey 경로
+```
+Enter 후 재확인, 성공할 때까지 반복.
+
+**GPG 서명** (`gpg` 또는 미설정 시):
 ```bash
 echo "intellicommit-gpg-check" | gpg --sign --batch --quiet --output /dev/null 2>&1
 echo "EXIT:$?"
 ```
-
 exit 非0 시 안내 후 대기:
 ```
 별도 터미널에서 실행 후 Enter:
