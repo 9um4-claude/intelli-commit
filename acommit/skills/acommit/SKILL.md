@@ -94,12 +94,21 @@ type: `feat` `fix` `refactor` `perf` `config` `chore` `test` `docs` — "왜/영
 
 ---
 
-## Phase 4: patch 파일 생성 (stash 전 필수)
+## Phase 4: patch 파일 생성 + 사전 검증 (stash 전 필수)
 
 승인된 플랜 기준으로 각 커밋 그룹의 patch 파일을 **stash 전에** 생성한다.
 - 해당 그룹의 hunk만 추출 (`diff --git`, `---`, `+++` 헤더 포함)
 - `group_N.patch`로 저장
 - untracked 파일은 내용을 변수로 보관
+
+patch 생성 후, 각 그룹에 대해 **dry-run으로 적용 가능성을 검증**한다.
+
+```bash
+git apply --check group_N.patch 2>&1
+```
+
+실패 시: 해당 그룹의 실패 원인을 사용자에게 보고하고 **실행 전에 중단**한다. stash는 하지 않는다.
+사용자가 플랜 수정을 요청하면 Phase 3으로 돌아가 재분류한다.
 
 ---
 

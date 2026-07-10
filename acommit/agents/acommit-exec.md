@@ -36,7 +36,15 @@ git add .
 git commit -m "<커밋 메시지 전문>"
 ```
 
-apply 실패 시: `--reject`로 부분 적용 시도 → 실패 내용 보고 → 해당 커밋 건너뜀.
+**apply 실패 시 — 건너뛰지 않는다:**
+1. 즉시 중단
+2. `git stash pop` 으로 원상복구
+3. pop도 실패하면 stash 이름(`acommit-YYYYMMDD-HHMMSS`)을 명시하고 수동 복구 안내:
+   ```
+   git stash show acommit-<timestamp>
+   git stash pop
+   ```
+4. 실패 원인(충돌 파일, hunk)을 보고하고 종료. 커밋은 하지 않는다.
 
 ### 완료 후 정리
 
