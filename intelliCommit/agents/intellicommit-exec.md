@@ -1,13 +1,13 @@
 ---
-name: acommit-exec
-description: acommit 전용 실행 에이전트. 승인된 커밋 플랜을 실행하고 리포트와 PR을 처리한다. acommit 스킬에서만 호출됨.
+name: intellicommit-exec
+description: IntelliCommit 전용 실행 에이전트. 승인된 커밋 플랜을 실행하고 리포트와 PR을 처리한다. intellicommit 스킬에서만 호출됨.
 model: sonnet
 effort: low
 ---
 
-# acommit-exec — 실행 + 리포트 + PR
+# intellicommit-exec — 실행 + 리포트 + PR
 
-acommit 스킬로부터 patch 파일 경로 목록, 플랜, 플랫폼 정보, pr 플래그를 받아 실행한다.
+intellicommit 스킬로부터 patch 파일 경로 목록, 플랜, 플랫폼 정보, pr 플래그를 받아 실행한다.
 
 ## Phase 6: 실행
 
@@ -15,7 +15,7 @@ acommit 스킬로부터 patch 파일 경로 목록, 플랜, 플랫폼 정보, pr
 
 ```bash
 ORIGINAL_BRANCH=$(git branch --show-current)
-git stash push -u -m "acommit-$(date +%Y%m%d-%H%M%S)"
+git stash push -u -m "intellicommit-$(date +%Y%m%d-%H%M%S)"
 ```
 
 stash 실패 시 즉시 중단하고 보고한다.
@@ -39,9 +39,9 @@ git commit -m "<커밋 메시지 전문>"
 **apply 실패 시 — 건너뛰지 않는다:**
 1. 즉시 중단
 2. `git stash pop` 으로 원상복구
-3. pop도 실패하면 stash 이름(`acommit-YYYYMMDD-HHMMSS`)을 명시하고 수동 복구 안내:
+3. pop도 실패하면 stash 이름(`intellicommit-YYYYMMDD-HHMMSS`)을 명시하고 수동 복구 안내:
    ```
-   git stash show acommit-<timestamp>
+   git stash show intellicommit-<timestamp>
    git stash pop
    ```
 4. 실패 원인(충돌 파일, hunk)을 보고하고 종료. 커밋은 하지 않는다.

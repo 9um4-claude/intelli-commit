@@ -1,9 +1,9 @@
 ---
-name: acommit
-description: 변경사항을 도메인별로 hunk 단위 분리해 커밋하고 브랜치를 자동 관리. "/acommit", "커밋해줘", "커밋 정리해줘" 등 커밋 요청 시 트리거.
+name: intellicommit
+description: 변경사항을 도메인별로 hunk 단위 분리해 커밋하고 브랜치를 자동 관리. "/intellicommit", "커밋해줘", "커밋 정리해줘" 등 커밋 요청 시 트리거.
 ---
 
-# acommit — Smart Commit Assistant
+# IntelliCommit — Smart Commit Assistant
 
 ## 실행 순서
 
@@ -13,7 +13,7 @@ description: 변경사항을 도메인별로 hunk 단위 분리해 커밋하고 
 4. **플랜 생성 + 사용자 승인**
 5. **patch 파일 생성** (stash 전 필수)
 6. **GPG 확인**
-7. **실행 + 리포트 + PR** — `acommit:acommit-exec` 에이전트에 위임
+7. **실행 + 리포트 + PR** — `intellicommit:intellicommit-exec` 에이전트에 위임
 
 ---
 
@@ -115,7 +115,7 @@ git apply --check group_N.patch 2>&1
 ## Phase 5: GPG 확인
 
 ```bash
-echo "acommit-gpg-check" | gpg --sign --batch --quiet --output /dev/null 2>&1
+echo "intellicommit-gpg-check" | gpg --sign --batch --quiet --output /dev/null 2>&1
 echo "EXIT:$?"
 ```
 
@@ -130,7 +130,7 @@ Enter 후 재확인, 성공할 때까지 반복.
 
 ## Phase 6–8: 실행 + 리포트 + PR
 
-생성된 **patch 파일 경로 목록** + 플랜 + 플랫폼 정보 + pr 플래그를 `acommit:acommit-exec` 에이전트에 전달.
+생성된 **patch 파일 경로 목록** + 플랜 + 플랫폼 정보 + pr 플래그를 `intellicommit:intellicommit-exec` 에이전트에 전달.
 
 ---
 
