@@ -8,16 +8,16 @@
   },
   "plugins": [
     {
-      "name": "acommit",
-      "displayName": "acommit",
-      "source": "./acommit",
+      "name": "intelliCommit",
+      "displayName": "IntelliCommit",
+      "source": "./intelliCommit",
       "description": "변경사항을 도메인별로 hunk 단위 분리해 커밋하고 브랜치를 자동 관리하는 스마트 커밋 어시스턴트",
       "version": "0.1.0",
       "author": {
         "name": "9um4",
         "email": "9um4.dev@gmail.com"
       },
-      "repository": "https://codeberg.org/9um4/CommitManager.git",
+      "repository": "https://codeberg.org/9um4/IntelliCommit.git",
       "license": "MIT",
       "keywords": ["git", "commit", "branch", "workflow", "smart-commit"],
       "category": "developer-tools"
