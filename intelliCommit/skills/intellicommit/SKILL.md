@@ -115,14 +115,20 @@ git commit -m "<커밋 메시지>"
 - `group_N.patch`로 저장
 - untracked 파일은 내용을 변수로 보관
 
-patch 생성 후, 각 그룹에 대해 **dry-run으로 적용 가능성을 검증**한다.
+patch를 생성한 즉시 (다음 그룹으로 넘어가기 전) 두 단계로 검증한다.
 
+**단계 1 — 형식 검증:**
 ```bash
-git apply --check group_N.patch 2>&1
+git apply --check --verbose group_N.patch 2>&1
 ```
+오류 메시지에 `corrupt patch` / `bad header` / `invalid line` 등이 포함되면
+**형식 오류**로 판단. patch를 재생성한다 (최대 1회 재시도).
 
-실패 시: 해당 그룹의 실패 원인을 사용자에게 보고하고 **실행 전에 중단**한다. stash는 하지 않는다.
-사용자가 플랜 수정을 요청하면 Phase 3으로 돌아가 재분류한다.
+**단계 2 — 적용 가능성 검증:**
+형식이 올바른데도 exit 非0이면 **컨텍스트 불일치**. 대상 브랜치가 기존 브랜치이고
+dev로부터 많이 갈라진 경우 발생 가능.
+→ 사용자에게 원인과 충돌 hunk를 보고하고 **stash 없이 중단**.
+→ Phase 3으로 돌아가 해당 그룹의 브랜치 배정을 재검토한다.
 
 ---
 
