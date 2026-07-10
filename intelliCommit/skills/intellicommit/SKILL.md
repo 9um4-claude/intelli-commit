@@ -97,12 +97,27 @@ type: `feat` `fix` `refactor` `perf` `config` `chore` `test` `docs` — "왜/영
 > 플랜의 모든 커밋 그룹이 현재 브랜치를 대상으로 하는가?
 
 **YES** → Phase 4~6 생략, 아래 fast-path 실행:
-```bash
-git add <해당 파일 또는 hunk>
-git commit -m "<커밋 메시지>"
-# 그룹 수만큼 반복
+
+그룹 내 분리 단위에 따라 스테이징 방식이 다르다:
+
+- **파일 단위 분리** (그룹의 대상 파일이 다른 경우):
+  ```bash
+  git add <file1> <file2>
+  git commit -m "<커밋 메시지>"
+  ```
+
+- **hunk 단위 분리** (같은 파일 안에서 나눠야 하는 경우):
+  patch 파일을 생성한 뒤 인덱스에 직접 적용한다 (stash/브랜치 전환 없음):
+  ```bash
+  git apply --cached group_N.patch
+  git commit -m "<커밋 메시지>"
+  ```
+
+그룹 수만큼 반복 후 아래 리포트를 출력하고 종료 (exec 에이전트 호출 없음):
 ```
-완료 후 Phase 7(리포트)로 이동.
+[흐름] <최근 커밋 포함 진행 상황 1~2문장>
+✓  <현재 브랜치>  →  <커밋 제목>
+```
 
 **NO** → Phase 4로 진행 (stash+patch 경로).
 
