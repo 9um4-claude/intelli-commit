@@ -71,6 +71,14 @@ untracked 파일은 Phase 1의 `git ls-files --others` 결과 사용.
 - <세부 내용>
 ```
 
+아래는 절대로 메시지에 포함하지 않는다.
+```
+Co-Authored-By: ...
+Co-written by ...
+Generated with Claude ...
+🤖 ...
+```
+
 type: `feat` `fix` `refactor` `perf` `config` `chore` `test` `docs` — "왜/영향" 중심으로 작성.
 
 ### 플랜 출력 형식
