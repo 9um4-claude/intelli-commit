@@ -92,6 +92,20 @@ type: `feat` `fix` `refactor` `perf` `config` `chore` `test` `docs` — "왜/영
 
 `y` 또는 승인 전까지 대기. 수정 요청 시 재분류.
 
+승인 직후 **fast-path 조건을 확인**한다:
+
+> 플랜의 모든 커밋 그룹이 현재 브랜치를 대상으로 하는가?
+
+**YES** → Phase 4~6 생략, 아래 fast-path 실행:
+```bash
+git add <해당 파일 또는 hunk>
+git commit -m "<커밋 메시지>"
+# 그룹 수만큼 반복
+```
+완료 후 Phase 7(리포트)로 이동.
+
+**NO** → Phase 4로 진행 (stash+patch 경로).
+
 ---
 
 ## Phase 4: patch 파일 생성 + 사전 검증 (stash 전 필수)
