@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "intelliCommit",
+  "name": "intelli-commit",
   "displayName": "IntelliCommit",
   "version": "0.2.0",
   "description": "변경사항을 도메인별로 분리해 커밋하고 브랜치를 자동 관리하는 스마트 커밋 어시스턴트",

@@ -13,7 +13,7 @@ description: 변경사항을 도메인별로 hunk 단위 분리해 커밋하고 
 4. **플랜 생성 + 사용자 승인**
 5. **patch 파일 생성** (stash 전 필수)
 6. **GPG 확인**
-7. **실행 + 리포트 + PR** — `intelliCommit:intellicommit-exec` 에이전트에 위임
+7. **실행 + 리포트 + PR** — `intelli-commit:intellicommit-exec` 에이전트에 위임
 
 ---
 
@@ -181,7 +181,7 @@ Enter 후 재확인, 성공할 때까지 반복.
 
 ## Phase 6–8: 실행 + 리포트 + PR
 
-생성된 **patch 파일 경로 목록** + 플랜 + 플랫폼 정보 + pr 플래그를 `intelliCommit:intellicommit-exec` 에이전트에 전달.
+생성된 **patch 파일 경로 목록** + 플랜 + 플랫폼 정보 + pr 플래그를 `intelli-commit:intellicommit-exec` 에이전트에 전달.
 
 ---
 
