@@ -66,9 +66,24 @@ untracked 파일은 Phase 1의 `git ls-files --others` 결과 사용.
 ```
 <type>: <요약>
 
-<왜 이 변경이 필요했는지>
+  <왜 이 변경이 필요했는지>
 
-- <세부 내용>
+  - <세부 내용>
+  - <세부 내용>
+    - <하위 세부 내용>
+```
+
+변경 범위가 넓어 항목별로 구분할 필요가 있을 때는 numbered list를 쓴다:
+```
+<type>: <요약>
+
+  <왜 이 변경이 필요했는지>
+
+  1. <대분류>
+    - <세부 내용>
+    - <세부 내용>
+  2. <대분류>
+    - <세부 내용>
 ```
 
 아래는 절대로 메시지에 포함하지 않는다.
@@ -80,6 +95,14 @@ Generated with Claude ...
 ```
 
 type: `feat` `fix` `refactor` `perf` `config` `chore` `test` `docs` — "왜/영향" 중심으로 작성.
+
+**표기 규칙:**
+- 제목줄은 들여쓰기 없음
+- 본문(설명, bullet, numbered list)은 공백 2칸 들여쓰기, 하위 항목은 2칸씩 추가
+- 한 문장은 한 줄로 완결 — 문장 도중 줄 바꿈 금지
+- 기술 용어는 영어 원문 표기 — 한글 음차 사용 안 함
+  - Context, Branch, Config, Patch, Hook, Diff, Stash, Cache
+  - Working directory, File, Field, Flag, Output, Path, Hash
 
 ### 플랜 출력 형식
 ```
